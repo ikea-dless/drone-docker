@@ -56,6 +56,7 @@ type (
 		Labels      []string // Label map
 		NoCache     bool     // Docker build no-cache
 		AddHost     []string // Docker build add-host
+		Secrets     []string // Docker build secret
 		Quiet       bool     // Docker build quiet
 	}
 
@@ -247,6 +248,9 @@ func commandBuild(build Build) *exec.Cmd {
 	}
 	if build.Target != "" {
 		args = append(args, "--target", build.Target)
+	}
+	for _, secret := range build.Secrets {
+		args = append(args, "--secret", secret)
 	}
 	if build.Quiet {
 		args = append(args, "--quiet")
