@@ -240,7 +240,7 @@ func main() {
 		},
 		cli.StringSliceFlag{
 			Name:   "secret",
-			Usage:  "Secret file to expose to the build (only if BuildKit enabled): id=mysecret,src=/local/secret",
+			Usage:  "Secret file to expose to the build (only if BuildKit enabled): id=mysecret src=/local/secret",
 			EnvVar: "PLUGIN_SECRET",
 		},
 	}
